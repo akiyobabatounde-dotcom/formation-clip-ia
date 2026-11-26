@@ -117,13 +117,26 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-siz
 }
 @media (max-width:620px){.demos{grid-template-columns:1fr}}
 @media (max-width:520px){.mods{grid-template-columns:1fr}.tbl th,.tbl td{padding:11px 10px;font-size:.88rem}}
+
+.modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px}
+.modal.on{display:flex}
+.box{background:#15151D;border:1px solid #2c2c36;border-radius:20px;max-width:420px;width:100%;padding:26px;position:relative}
+.box h3{font-size:1.3rem;margin-bottom:4px}.box p{color:var(--mut);font-size:.92rem;margin-bottom:16px}
+.box label{display:block;font-size:.85rem;font-weight:600;margin:12px 0 6px}
+.box input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #33333d;background:#0E0E14;color:#fff;font:inherit;font-size:1rem}
+.box input:focus{outline:2px solid var(--gold);border-color:transparent}
+.box .btn{width:100%;margin-top:18px}.box .x{position:absolute;top:12px;right:16px;background:none;border:0;color:var(--mut);font-size:1.6rem;cursor:pointer}
+.box .err{color:#ff7a5c;font-size:.88rem;margin-top:10px;min-height:1em}
+.thanks{display:none;background:linear-gradient(135deg,#1f3a2a,#14241b);border-bottom:1px solid #2e5a3f;padding:14px 0;text-align:center;font-weight:600}
+.thanks.on{display:block}
 </style>
 </head>
 <body>
 
+<div class="thanks" id="thanks">✅ Merci pour ton paiement ! Ta formation arrive par email dans quelques minutes (pense à vérifier les spams). Un souci ? WhatsApp +229 01 46 97 25 65</div>
 <header class="top"><div class="wrap">
   <div class="brand"><img src="logo.jpg" alt="BLESSMAX DIGITAL"> BLESSMAX DIGITAL</div>
-  <a class="btn" href="https://link.saspay.me/68cfwxkkpai">Obtenir la formation · 8 000 F</a>
+  <a class="btn" href="https://link.saspay.me/68cfwxkkpai" data-buy>Obtenir la formation · 8 000 F</a>
 </div></header>
 
 <!-- HERO -->
@@ -138,7 +151,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-siz
       <li>Monter tes vidéos, fixer tes prix et trouver tes premiers clients</li>
     </ul>
     <div class="price-line">
-      <a class="btn" href="https://link.saspay.me/68cfwxkkpai">Je veux la formation →</a>
+      <a class="btn" href="https://link.saspay.me/68cfwxkkpai" data-buy>Je veux la formation →</a>
       <div class="price">8 000 F <small>paiement unique</small></div>
     </div>
     <p class="note">Paiement sécurisé par SasPay · Mobile Money ou carte · Livraison par email</p>
@@ -254,7 +267,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-siz
     <div class="step"><h3>Reçois la formation par email</h3><p>Tu reçois le lien de téléchargement (PDF + 6 vidéos) dans ta boîte email. Pense à vérifier les spams.</p></div>
   </div>
   <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap">
-    <a class="btn" href="https://link.saspay.me/68cfwxkkpai">Payer 8 000 F avec SasPay</a>
+    <a class="btn" href="https://link.saspay.me/68cfwxkkpai" data-buy>Payer 8 000 F avec SasPay</a>
     <a class="btn btn-wa" href="https://wa.me/2290146972565?text=Bonjour%2C%20j%27ai%20pay%C3%A9%20la%20Formation%20Vid%C3%A9o%20IA%20%26%20Avatar%20mais%20je%20n%27ai%20pas%20re%C3%A7u%20l%27email.">Pas reçu l'email ? Écris-nous</a>
   </div>
 </div></section>
@@ -280,13 +293,45 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-siz
   <h2>Ta première vidéo IA cette semaine</h2>
   <p class="lead">Guide PDF de 27 pages, 6 vidéos, tous les prompts et scripts, pour 8 000 F seulement.</p>
   <div class="btns">
-    <a class="btn" href="https://link.saspay.me/68cfwxkkpai">Obtenir la formation · 8 000 F</a>
+    <a class="btn" href="https://link.saspay.me/68cfwxkkpai" data-buy>Obtenir la formation · 8 000 F</a>
     <a class="btn btn-wa" href="https://wa.me/2290146972565?text=Bonjour%2C%20j%27ai%20une%20question%20sur%20la%20Formation%20Vid%C3%A9o%20IA%20%26%20Avatar">Poser une question</a>
   </div>
 </div></section>
 
 <footer><div class="wrap">© 2026 BLESS MAX · BLESSMAX DIGITAL · Abomey-Calavi, Bénin · WhatsApp +229 01 46 97 25 65<br>ElevenLabs, Suno et CapCut sont des marques de leurs propriétaires respectifs. Formation indépendante.</div></footer>
 
-<div class="sticky-cta"><a class="btn" href="https://link.saspay.me/68cfwxkkpai">Obtenir la formation · 8 000 F</a></div>
+<div class="sticky-cta"><a class="btn" href="https://link.saspay.me/68cfwxkkpai" data-buy>Obtenir la formation · 8 000 F</a></div>
+
+<div class="modal" id="buy" role="dialog" aria-modal="true" aria-labelledby="buyT">
+  <form class="box" id="buyF">
+    <button type="button" class="x" aria-label="Fermer" data-close>×</button>
+    <h3 id="buyT">Recevoir la formation</h3>
+    <p>8 000 F · Paiement sécurisé SasPay (Mobile Money ou carte). La formation est envoyée automatiquement à ton email.</p>
+    <label for="fN">Nom et prénom</label><input id="fN" name="name" required autocomplete="name" placeholder="Ex : Awa Sossou">
+    <label for="fE">Email (pour recevoir la formation)</label><input id="fE" name="email" type="email" required autocomplete="email" placeholder="ton@email.com">
+    <label for="fP">Téléphone / WhatsApp</label><input id="fP" name="phone" type="tel" autocomplete="tel" placeholder="+229 ...">
+    <button class="btn" type="submit" id="fB">Continuer vers le paiement →</button>
+    <div class="err" id="fErr"></div>
+  </form>
+</div>
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyBlzEiyYR0tDoOzGsFUhUH913Bvuv8FJ8ODX_6TNEdRmjjsmXkamsuiAp0ETCHXBiDVQ/exec"; // URL du script Google (livraison automatique)
+const FALLBACK = "https://link.saspay.me/68cfwxkkpai";
+const m=document.getElementById('buy'), f=document.getElementById('buyF'), err=document.getElementById('fErr'), b=document.getElementById('fB');
+document.querySelectorAll('[data-buy]').forEach(a=>a.addEventListener('click',e=>{ if(!SCRIPT_URL) return; e.preventDefault(); m.classList.add('on'); setTimeout(()=>document.getElementById('fN').focus(),50); }));
+m.addEventListener('click',e=>{ if(e.target===m||e.target.hasAttribute('data-close')) m.classList.remove('on'); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') m.classList.remove('on'); });
+f.addEventListener('submit',async e=>{
+  e.preventDefault(); err.textContent=''; b.disabled=true; b.textContent='Préparation du paiement…';
+  try{
+    const r=await fetch(SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({name:f.name.value,email:f.email.value,phone:f.phone.value})});
+    const d=await r.json();
+    if(d.ok&&d.checkout_url){ location.href=d.checkout_url; return; }
+    err.textContent=d.error||'Erreur, réessaie.';
+  }catch(x){ err.textContent='Connexion impossible. Réessaie ou écris-nous sur WhatsApp.'; }
+  b.disabled=false; b.textContent='Continuer vers le paiement →';
+});
+if(new URLSearchParams(location.search).get('paye')){ document.getElementById('thanks').classList.add('on'); if(SCRIPT_URL){ fetch(SCRIPT_URL+'?action=check').catch(()=>{}); setTimeout(()=>fetch(SCRIPT_URL+'?action=check').catch(()=>{}),45000);} }
+</script>
 </body>
 </html>
